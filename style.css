@@ -1036,3 +1036,8 @@ select,
     display: block !important;
   }
 }
+
+  .drK, .drK .headCn, .drK .mnBrs{
+  background-color: #000000a1;
+  
+}
