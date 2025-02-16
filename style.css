@@ -32,23 +32,55 @@ input#buscador {
   color: #000000;
 }
 
-#junik{
-display: flex;
-padding: 1px 1px;
-width: 1px;
-height: 20px;
-
+/* Center the header element on all screen sizes */
+.headN#header-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
 }
 
-ul #ju{
-list-style: none;
-font-weight: 500px;
-font-size: 7vw;
-letter-spacing:1vw;
-color: #555555;
-text-shadow: none;
-animation: anim 5s infinite linear;
+.headN#header-title .headInnr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
+/* Fix the junik element to be properly centered */
+#junik {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#ju {
+  list-style: none;
+  font-weight: 500;
+  font-size: 7vw;
+  letter-spacing: 1vw;
+  color: #555555;
+  text-shadow: none;
+  animation: anim 5s infinite linear;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 48em) {
+  #ju {
+    font-size: 5vw; /* Slightly smaller on larger screens */
+  }
+}
+
+@media screen and (min-width: 75em) {
+  #ju {
+    font-size: 4vw; /* Even smaller on very large screens */
+    max-width: 1200px; /* Prevent stretching too wide */
+  }
 }
 
 @keyframes anim {
@@ -907,4 +939,100 @@ select,
   height: auto;
   margin-right: 5px;
   margin-bottom: 3px;
+}
+
+/* Mantener el tamaño de las tarjetas en pantallas grandes */
+@media screen and (min-width:48em) {
+  .TPost.B .Image figure {
+    padding-top: 150%; /* Mantener la proporción en pantallas grandes */
+  }
+  
+  .MovieList > li {
+    /* Mantener el mismo padding en pantallas grandes */
+    padding: 0 .3rem .6rem;
+  }
+  
+  /* Limitar el ancho máximo del contenedor en pantallas grandes para mantener consistencia */
+  .Container {
+    max-width: 1200px;
+  }
+}
+
+/* Ajustar el tamaño de fuente para mantener proporciones en pantallas grandes */
+@media screen and (min-width:62em) {
+  .TPost.B .Image + .Title {
+    font-size: .75rem; /* Mantener el mismo tamaño que en móvil */
+  }
+  
+  .TPost.B .TPMvCn .Title {
+    font-size: 1rem; /* Mantener proporción */
+  }
+}
+
+/* Para pantallas muy grandes, evitar que los elementos se estiren demasiado */
+@media screen and (min-width:75em) {
+  .MovieList {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Forzar que siempre se muestre el mismo número de columnas */
+  .MovieList.Rows > * {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+/* Reglas para ocultar el menú hamburguesa en pantallas grandes */
+@media screen and (min-width:48em), 
+       screen and (min-width:62em), 
+       screen and (min-width:75em) {
+  /* Ocultar el menú hamburguesa en pantallas grandes */
+  .hamburger-menu, 
+  .navbar-toggler,
+  .menu-toggle,
+  [class*='menu-icon'],
+  [class*='navbar-toggle'],
+  [class*='hamburger'] {
+    display: none !important;
+  }
+  
+  /* Si hay un menú desplegable específico que aparece en móvil */
+  .mobile-menu,
+  .responsive-menu,
+  .menu-collapse {
+    display: none !important;
+  }
+  
+  /* Ajustar la lupa de búsqueda */
+  .search-form,
+  .search-box,
+  [class*='search-container'],
+  [class*='search-wrapper'] {
+    /* Mantener visible y ajustar posición */
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: auto !important;
+  }
+  
+  /* Si la lupa usa un icono específico */
+  .search-icon,
+  [class*='fa-search'],
+  [class*='icon-search'],
+  .lupa {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+  }
+  
+  /* Ajustar el input de búsqueda */
+  input#buscador,
+  input[type="search"],
+  .search-input {
+    width: 95% !important;
+    margin: 10px auto !important;
+    display: block !important;
+  }
 }
