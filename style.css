@@ -141,9 +141,7 @@ animation: anim 10s infinite linear;
     #homep,
     #sPelis,
     #avisop,
-    #avisol,
-    #compartir,
-    #telegram{
+    #avisol{
       width: 25px;
       height: 25px;
     }
@@ -154,6 +152,16 @@ animation: anim 10s infinite linear;
 
     #comp{
       cursor: pointer;
+      
+    }
+
+    #nav-widget-1{
+      background: #000000e7;
+      
+    }
+
+    .d-inline-flex{
+      margin: 10px 0;
     }
 
 
