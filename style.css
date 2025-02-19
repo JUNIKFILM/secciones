@@ -161,7 +161,7 @@ animation: anim 10s infinite linear;
 
     .d-inline-flex{
       margin: 7px 0;
-      width: 300px;
+      width: 150px;
       
     }
 
@@ -176,7 +176,7 @@ animation: anim 10s infinite linear;
     }
 
     .close-button{
-      left: 250%;
+      left: 190%;
       
     }
 
