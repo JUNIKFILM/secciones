@@ -160,9 +160,8 @@ animation: anim 10s infinite linear;
     }
 
     .d-inline-flex{
-      margin: 7px 0;
-      width: 150px;
-      
+      margin: 6px 0;
+      width: 170px;
     }
 
     .mMenu > li {
