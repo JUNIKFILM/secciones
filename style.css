@@ -1128,18 +1128,7 @@ select,
   
 }
 
-.searchInput{
-  padding: 8px 12px;
-  margin: 10px 0;
-  width: 100%;
-  max-width: 300px;
-  border: 1px;
-  border-radius: 4px;
-  font-size: 14px;
-  
-}
-
-input{
+#movieSearch{
   background-color: #3636368c;
   width: 100%;
   max-width: 100%;
