@@ -126,3 +126,8 @@ function m_buscador(){
  
 }    
 
+document.getElementById("home-movies-post").addEventListener("click", o_buscador);
+
+function o_buscador(){
+    movieSearch.style.display = "none";
+
