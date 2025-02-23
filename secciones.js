@@ -119,16 +119,4 @@ function initializeSearch() {
 // Call the initialization
 initializeSearch();
 
-document.getElementById("lupa").addEventListener("click", m_buscador);
 
-function m_buscador(){
-    movieSearch.style.display = "block";
- 
-}    
-
-document.getElementById("home-movies-post").addEventListener("click", o_buscador);
-
-function o_buscador(){
-    movieSearch.style.display = "none";
- 
-}    
