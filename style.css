@@ -1139,6 +1139,6 @@ select,
   outline: none;
   font-size: 0.8rem;
   color: #c2bfbf;
-  display: none;
+  display: block;
   
 }
