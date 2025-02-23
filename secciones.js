@@ -84,16 +84,52 @@ function createSearchBar() {
     const searchDiv = document.createElement('div');
     searchDiv.className = 'search-container';
     
+    // Create wrapper for search input and clear button
+    const inputWrapper = document.createElement('div');
+    inputWrapper.className = 'input-wrapper';
+    inputWrapper.style.position = 'relative';
+    
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.id = 'movieSearch';
     searchInput.placeholder = 'Buscar películas...';
     searchInput.className = 'search-input';
     
+    // Create clear button
+    const clearButton = document.createElement('button');
+    clearButton.innerHTML = '×';
+    clearButton.className = 'clear-button';
+    clearButton.style.cssText = `
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        display: none;
+        color: #666;
+    `;
     
-    
-    searchDiv.appendChild(searchInput);
+    // Add elements to DOM
+    inputWrapper.appendChild(searchInput);
+    inputWrapper.appendChild(clearButton);
+    searchDiv.appendChild(inputWrapper);
     container.insertBefore(searchDiv, movieList);
+    
+    // Clear button functionality
+    clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        clearButton.style.display = 'none';
+        filterMovies('');
+        searchInput.focus();
+    });
+    
+    // Show/hide clear button based on input
+    searchInput.addEventListener('input', () => {
+        clearButton.style.display = searchInput.value ? 'block' : 'none';
+    });
     
     return searchInput;
 }
@@ -118,5 +154,3 @@ function initializeSearch() {
 
 // Call the initialization
 initializeSearch();
-
-
