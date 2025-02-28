@@ -296,6 +296,14 @@ animation: anim 10s infinite linear;
         #tex{
           font-weight: 600;
         }
+
+.Qlty {
+  background-color: rgba(252, 206, 3, 0.7);
+  color: rgb(0, 0, 0);
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 20px;
+}
         
       
 
