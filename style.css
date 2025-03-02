@@ -249,6 +249,36 @@ animation: anim 10s infinite linear;
       
     }
 
+      .movie-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+}
+
+.quality-ribbon{
+position: absolute; 
+top: -0px; 
+left: -40px; 
+width: 120px; 
+height: 30px; 
+background-color: #fdc200bd; 
+color: white; 
+transform: rotate(-45deg); 
+display: flex; 
+justify-content: center; 
+align-items: center; 
+font-weight: bold; 
+box-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+z-index: 10;
+
+}
+
 
 
        body {
