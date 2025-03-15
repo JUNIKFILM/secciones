@@ -1,33 +1,62 @@
-// Agregar estilos CSS necesarios para la animación
-const style = document.createElement('style');
-style.textContent = `
+ // Funcionalidad para el menú móvil
+    const menuToggle = document.getElementById('menu-toggle');
+    const closeMenu = document.getElementById('close-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-`;
-document.head.appendChild(style);
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+    });
 
-// Envolver el menú en un contenedor si no existe
-document.querySelectorAll('.mMenu').forEach(menu => {
-    if (!menu.parentElement.classList.contains('menu-container')) {
-        const container = document.createElement('div');
-        container.className = 'menu-container';
-        menu.parentNode.insertBefore(container, menu);
-        container.appendChild(menu);
-    }
-});
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+    });
 
-function selectItem(element) {
-            // Remove selected class from all items
-            const items = document.querySelectorAll('.menu-item');
-            items.forEach(item => {
-                item.classList.remove('selected');
-            });
-            
-            // Add selected class to clicked item
-            element.classList.add('selected');
-        }
+    
+    // Funcionalidad para el botón flotante
+    const toggleFloatingMenu = document.getElementById('toggle-floating-menu');
+    const floatingMenuItems = document.getElementById('floating-menu-items');
 
- // Create the offline notification element
-function createOfflineNotification() {
+    toggleFloatingMenu.addEventListener('click', () => {
+      floatingMenuItems.classList.toggle('hidden');
+      toggleFloatingMenu.classList.toggle('active');
+    });
+
+    // Cerrar menú móvil al cambiar a desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+
+    
+document.addEventListener("DOMContentLoaded", () => {
+  // Get all navigation buttons
+  const navButtons = document.querySelectorAll(".header-nav .btn")
+
+  // Add click event listener to each button
+  navButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      // Prevent default action for demo purposes (remove this in production if you want the links to work)
+      e.preventDefault()
+
+      // Remove active class from all buttons
+      navButtons.forEach((btn) => {
+        btn.classList.remove("active")
+      })
+
+      // Add active class to clicked button
+      this.classList.add("active")
+
+      // Optional: Store the active item in localStorage to persist across page loads
+      localStorage.setItem("activeNavItem", this.getAttribute("data-name"))
+    })
+  })
+
+  
+})
+
+     // Create the offline notification element
+     function createOfflineNotification() {
   const notification = document.createElement('div');
   notification.id = 'offline-notification';
   notification.className = 'notification offline-notification hidden';
@@ -44,7 +73,7 @@ function createOfflineNotification() {
       </svg>
     </div>
     <div class="notification-content">
-      <h2>Sin conexión a Internet</h2>
+      <h3>Sin conexión a Internet</h3>
     </div>
   `;
   
@@ -68,7 +97,7 @@ function createOnlineNotification() {
       </svg>
     </div>
     <div class="notification-content">
-      <h2>Conexión restablecida</h2>
+      <h3>Conexión restablecida</h3>
     </div>
   `;
   
@@ -102,7 +131,7 @@ function addStyles() {
     }
     
     .online-notification {
-      background-color: #4CAF50;
+      background-color: #333333cb;
       color: white;
     }
     
@@ -111,7 +140,7 @@ function addStyles() {
       flex-shrink: 0;
     }
     
-    .notification-content h2 {
+    .notification-content h3 {
       margin: 0 0 8px 0;
       font-size: 18px;
        color: rgb(255, 255, 255);
@@ -199,5 +228,39 @@ function initConnectionNotifications() {
 // Run the initialization when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initConnectionNotifications);
 
-
-
+document.addEventListener('DOMContentLoaded', function() {
+            const scrollMenu = document.getElementById('categoryMenu');
+            const scrollLeftBtn = document.querySelector('.scroll-left');
+            const scrollRightBtn = document.querySelector('.scroll-right');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            // Botones de desplazamiento
+            scrollLeftBtn.addEventListener('click', function() {
+                scrollMenu.scrollBy({ left: -200, behavior: 'smooth' });
+            });
+            
+            scrollRightBtn.addEventListener('click', function() {
+                scrollMenu.scrollBy({ left: 200, behavior: 'smooth' });
+            });
+            
+            // Activar categoría al hacer clic
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Quitar clase activa de todos los botones
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Añadir clase activa al botón clickeado
+                    this.classList.add('active');
+                    
+                    // Asegurar que el botón activo sea visible
+                    const buttonRect = this.getBoundingClientRect();
+                    const menuRect = scrollMenu.getBoundingClientRect();
+                    
+                    if (buttonRect.left < menuRect.left) {
+                        this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                    } else if (buttonRect.right > menuRect.right) {
+                        this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' });
+                    }
+                });
+            });
+        });
